@@ -1,7 +1,6 @@
 --1. List all customers who live in texas
 
 select * from customer;
-
 select * from address;
 
 select customer.first_name ,customer.last_name ,customer.address_id,address.district 
@@ -10,12 +9,12 @@ join address
 on customer.address_id =address.address_id
 where address.district like 'Texas';
 
+-- Answer: Jennifer Davis, Kim Crus, Richard Mccrary, Bryan Hardison, Iasn Still
+
 --2. Get all payments above $6.99 with the customer's Full Name
 
 select * from customer; 
 select * from payment;
-
-
 
 select first_name,last_name,amount
 from customer 
@@ -35,15 +34,14 @@ where customer_id in(
 	where amount > 175
 );
 
+-- Answer: Jennifer Davis, Mary Smith, Harold Martino
+
 --4. List all customers that live in Nepal (use the city table)
 
 select * from city;
-
 select * from customer;
-
 select * from address;
 select * from country;
-
 
 select first_name,last_name,country
 from customer 
@@ -55,8 +53,9 @@ join country
 on city.country_id = country.country_id 
 where country like 'Nepal';
 
---5. Which staff member had the most transactions?
+-- Answer: Kevin Schuler
 
+--5. Which staff member had the most transactions?
 
 select * from staff;
 
@@ -68,6 +67,8 @@ group by first_name,last_name,staff.staff_id
 order by Most_Transactions desc 
 fetch first 1 row only;
 
+-- Answer: John Stephens
+
 --6. How many movies of each rating are there?
 
 select * from film;
@@ -76,6 +77,8 @@ select rating, count(title) as Number_of_movies
 from film 
 group by rating 
 order by Number_of_movies asc;
+
+-- Answer: G, 178 - PG - 194, R - 195, NC-17 - 210, PG-13
 
 --7.Show all customers who have made a single payment above $6.99 (Use Subqueries)
 
@@ -100,4 +103,4 @@ join payment
 on rental.rental_id=payment.rental_id 
 where amount = 0;
 
-
+-- Answer: 24
